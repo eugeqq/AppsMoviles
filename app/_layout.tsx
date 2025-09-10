@@ -1,13 +1,33 @@
-import { Stack } from "expo-router";
+import { Ionicons } from "@expo/vector-icons"; // Importa los íconos
+import AntDesign from '@expo/vector-icons/AntDesign';
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+import { Tabs } from "expo-router";
+
 
 export default function RootLayout() {
   return (
-    /* Como el punto de entrada es el archivo layout,
-    ahora definimos como pantalla inicial el index
-    */
-    <Stack>
-      <Stack.Screen name="index" />
-  
-    </Stack>
+   <Tabs>
+     <Tabs.Screen name="perfil" options={{
+          title: 'Perfil',
+          tabBarIcon: ({ color, focused }) => (
+            <AntDesign name="user" size={24} color="black" />
+          ),
+        }}
+      />
+     <Tabs.Screen name="contador" options={{ 
+          title: "Contador",
+          tabBarIcon: ({ color, focused }) => (
+           <Ionicons name="add" size={24} color="black" />
+          ),}}/>
+     <Tabs.Screen name="tarjetas" options={{ title: "Tarjetas",
+      tabBarIcon: ({ color, focused }) => (
+          <SimpleLineIcons name="options-vertical" size={24} color="black" />
+      ),
+     }}/>
+     <Tabs.Screen name="components/Perfil" options={{ href: null,}}/>
+     <Tabs.Screen name="components/CardButton" options={{ href: null,}}/>
+     <Tabs.Screen name="components/Contador" options={{ href: null,}}/>
+     <Tabs.Screen name="index" options={{ href: null,}}/>
+   </Tabs>
   );
 }
