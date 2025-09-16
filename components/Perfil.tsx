@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import {
-    Modal,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Modal,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { theme } from '../constants/theme';
+import { theme } from '../app/constants/theme';
 
 export default function Perfil() {
   const [nombre, setNombre] = useState("Eugenia");

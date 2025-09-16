@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { theme } from '../constants/theme';
+import { theme } from '../app/constants/theme';
 type Props = {};
 
 const Contador = (props: Props) => {

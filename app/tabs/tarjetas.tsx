@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import CardButton from './components/CardButton';
-import { theme } from './constants/theme';
+import CardButton from '../../components/CardButton';
+import { theme } from '../constants/theme';
 
 const CARDS = ['Tarjeta 1', 'Tarjeta 2', 'Tarjeta 3'];
 

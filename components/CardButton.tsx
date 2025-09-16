@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, StyleProp, StyleSheet, Text, ViewStyle } from 'react-native';
-import { theme } from '../constants/theme';
+import { theme } from '../app/constants/theme';
 
 // esta es la interfaz de propiedades que recibe el componenete
 type CardButtonProps = {

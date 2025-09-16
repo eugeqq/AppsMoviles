@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import Contador from './components/Contador';
-import { theme } from './constants/theme';
+import Contador from '../../components/Contador';
+import { theme } from '../constants/theme';
 
 const CARDS = ['Tarjeta 1', 'Tarjeta 2', 'Tarjeta 3'];
 
