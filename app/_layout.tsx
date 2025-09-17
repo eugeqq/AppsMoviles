@@ -1,28 +1,12 @@
-import { AntDesign, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-
 
 export default function RootLayout() {
   return (
-   <Tabs>
-     <Tabs.Screen name="tabs/perfil" options={{
-          title: 'Perfil',
-          tabBarIcon: ({ color, focused }) => (
-            <AntDesign name="user" size={24} color="black" />
-          ),
-        }}
-      />
-     <Tabs.Screen name="tabs/contador" options={{ 
-          title: "Contador",
-          tabBarIcon: ({ color, focused }) => (
-           <Ionicons name="add" size={24} color="black" />
-          ),}}/>
-     <Tabs.Screen name="tabs/tarjetas" options={{ title: "Tarjetas",
-      tabBarIcon: ({ color, focused }) => (
-          <SimpleLineIcons name="options-vertical" size={24} color="black" />
-      ),
-     }}/>
-     <Tabs.Screen name="index" options={{ href: null, }}/>
-   </Tabs>
+     <Tabs>
+        <Tabs.Screen name="tabs/galeria" options={{ title: "Galería" ,tabBarIcon: ({ color, size }) => (
+            <Ionicons name="images" size={size} color={color} />)}} />
+        <Tabs.Screen name="index" options={{ href: null, }} />
+    </Tabs>
   );
 }
