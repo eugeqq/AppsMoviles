@@ -1,33 +1,48 @@
-
-import React, { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Button, FlatList, StyleSheet, View } from 'react-native';
+import NuevoProductoModal from '../../components/NuevoProductoModal';
 import Product from '../../components/Product';
 import SearchBar from '../../components/SearchBar';
-
-const PRODUCTS = [
-  { id: '1', label: 'Camiseta', price: 2500, image: 'https://i.pinimg.com/736x/40/32/07/403207e5e98210acaf749b7aeaad705a.jpg' },
-    { id: '2', label: 'Pantalón', price: 4500, image: 'https://i.pinimg.com/736x/34/f5/63/34f5635cc9b658fff7f62cd1411fc7b9.jpg' },
-    { id: '3', label: 'Zapatillas', price: 8000, image: require('../../assets/images/zapatilla.jpg') },
-];
+import { API_BASE_URL } from '../../constants/config';
 
 export default function Galeria() {
   const [search, setSearch] = useState('');
+  const [products, setProducts] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const filteredProducts = PRODUCTS.filter((item) =>
+  useEffect(() => {
+    axios.get(`${API_BASE_URL}/products`)
+      .then(res => setProducts(res.data))
+      .catch(err => console.error('Error al cargar productos:', err));
+  }, []);
+
+  const handleCreate = (nuevo) => {
+    setProducts(prev => [...prev, nuevo]);
+  };
+
+  const filteredProducts = products.filter((item) =>
     item.label.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <View style={styles.container}>
       <SearchBar value={search} onChangeText={setSearch} placeholder="Buscar producto..." />
+      <Button title="Nuevo producto" onPress={() => setModalVisible(true)} />
 
       <FlatList
         data={filteredProducts}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Product label={item.label} price={item.price} image={item.image} />
         )}
         contentContainerStyle={{ paddingBottom: 20 }}
+      />
+
+      <NuevoProductoModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onCreate={handleCreate}
       />
     </View>
   );
